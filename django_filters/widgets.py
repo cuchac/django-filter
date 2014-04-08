@@ -93,6 +93,9 @@ class RangeWidget(forms.MultiWidget):
 
 
 class LookupTypeWidget(forms.MultiWidget):
+    def value_from_datadict(self, data, files, name):
+        return [widget.value_from_datadict(data, files, name + appendix) for appendix, widget in zip(['', '_lookup'],self.widgets)]
+
     def decompress(self, value):
         if value is None:
             return [None, None]
