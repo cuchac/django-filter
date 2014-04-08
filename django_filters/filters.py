@@ -30,7 +30,7 @@ class Filter(object):
     field_class = forms.Field
 
     def __init__(self, name=None, label=None, widget=None, action=None,
-        lookup_type='exact', required=False, distinct=False, exclude=False, **kwargs):
+        lookup_type=None, required=False, distinct=False, exclude=False, **kwargs):
         self.name = name
         self.label = label
         if action:
