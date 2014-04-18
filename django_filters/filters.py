@@ -88,6 +88,8 @@ class BooleanFilter(Filter):
     field_class = forms.NullBooleanField
 
     def filter(self, qs, value):
+        if isinstance(value, Lookup):
+            value = value.value
         if value is not None:
             return qs.filter(**{self.name: value})
         return qs

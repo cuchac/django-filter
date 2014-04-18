@@ -227,7 +227,7 @@ FILTER_FOR_DBFIELD_DEFAULTS = {
 class BaseFilterSet(object):
     filter_overrides = {}
     order_by_field = ORDER_BY_FIELD
-    strict = True
+    strict = False
 
     def __init__(self, data=None, queryset=None, prefix=None, strict=None):
         self.is_bound = data is not None
