@@ -106,8 +106,10 @@ class MultipleChoiceFilter(Filter):
     field_class = forms.MultipleChoiceField
 
     def filter(self, qs, value):
+        if isinstance(value, Lookup):
+            value = value.value
         value = value or ()
-        if len(value) == len(self.field.choices):
+        if hasattr(self.field, "choices") and len(value) == len(self.field.choices):
             return qs
         q = Q()
         for v in value:
